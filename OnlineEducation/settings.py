@@ -138,3 +138,31 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# https://django-grappelli.readthedocs.io/en/latest/customization.html
+GRAPPELLI_ADMIN_TITLE = "Online Education Management System"
+GRAPPELLI_SWITCH_USER = True
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.FileHandler',
+            'filename': 'django_admin.log',  # 日志文件名称
+        },
+    },
+    'loggers': {
+        'django': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+            'propagate': True,
+        },
+        'django.request': {
+            'handlers': ['file'],
+            'level': 'ERROR',
+            'propagate': False,
+        },
+    },
+}
