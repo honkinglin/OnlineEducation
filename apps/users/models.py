@@ -15,7 +15,6 @@ class UserProfile(AbstractUser):
     class Meta:
         verbose_name = 'User Profile'
         verbose_name_plural = verbose_name
-        db_table = 'UserProfile'
 
     def __str__(self):
         return self.username
@@ -30,7 +29,6 @@ class EmailVerifyRecord(models.Model):
     class Meta:
         verbose_name = 'Email Verification Code'
         verbose_name_plural = verbose_name
-        db_table = 'EmailVerifyRecord'
 
     def __str__(self):
         return '{0}({1})'.format(self.code, self.email)
@@ -46,7 +44,6 @@ class Banner(models.Model):
     class Meta:
         verbose_name = 'Banner'
         verbose_name_plural = verbose_name
-        db_table = 'Banner'
 
     def __str__(self):
         return self.title
