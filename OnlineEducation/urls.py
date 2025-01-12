@@ -17,8 +17,29 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
+from django.views.generic import TemplateView
+from django.views.static import serve
+
+from OnlineEducation.settings import MEDIA_ROOT
+from apps.users.views import LogoutView, LoginView, RegisterView, AciveUserView, ForgetPwdView, ResetView, ModifyPwdView
 
 urlpatterns = [
        path('grappelli/', include('grappelli.urls')),  # grappelli URLS
        path('admin/', admin.site.urls),
+
+       path('', TemplateView.as_view(template_name="index.html"), name="index"),
+       path('login/', LoginView.as_view(), name="login"),
+       path('register/', RegisterView.as_view(), name="register"),
+       path('captcha/', include('captcha.urls')),
+       path('active/<str:active_code>/', AciveUserView.as_view(), name="user_active"),
+       path('forget/', ForgetPwdView.as_view(), name="forget_pwd"),
+       path('reset/<str:active_code>/', ResetView.as_view(), name="reset_pwd"),
+       path('modify_pwd/', ModifyPwdView.as_view(), name="modify_pwd"),
+
+       path('org/', include(('apps.orgnization.urls', 'org'), namespace="org")),
+
+
+       path('media/<path:path>', serve, {"document_root": MEDIA_ROOT}),
+       path('logout/', LogoutView.as_view(), name="logout"),
+
 ]

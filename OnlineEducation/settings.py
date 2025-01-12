@@ -30,6 +30,9 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
+AUTHENTICATION_BACKENDS = (
+    'apps.users.views.CustomBackend',
+)
 
 INSTALLED_APPS = [
     'grappelli',
@@ -42,7 +45,9 @@ INSTALLED_APPS = [
     'apps.users.apps.UsersConfig',
     'apps.courses.apps.CoursesConfig',
     'apps.orgnization.apps.OrgnizationConfig',
-    'apps.operation.apps.OperationConfig'
+    'apps.operation.apps.OperationConfig',
+    'captcha',
+    'pure_pagination',
 ]
 
 AUTH_USER_MODEL = 'users.UserProfile'
@@ -166,3 +171,13 @@ LOGGING = {
         },
     },
 }
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'kyrietest66@gmail.com'
+EMAIL_HOST_PASSWORD = 'fuyletwtskivxvjt'
+EMAIL_USE_TLS = False
+EMAIL_FROM = EMAIL_HOST_USER
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
