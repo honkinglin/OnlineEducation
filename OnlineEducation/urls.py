@@ -37,7 +37,7 @@ urlpatterns = [
        path('modify_pwd/', ModifyPwdView.as_view(), name="modify_pwd"),
 
        path('org/', include(('apps.orgnization.urls', 'org'), namespace="org")),
-
+       path('course/', include(('apps.courses.urls', 'course'), namespace="course")),
 
        path('media/<path:path>', serve, {"document_root": MEDIA_ROOT}),
        path('logout/', LogoutView.as_view(), name="logout"),

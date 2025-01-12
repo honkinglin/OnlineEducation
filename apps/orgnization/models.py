@@ -46,6 +46,8 @@ class Teacher(models.Model):
     points = models.CharField(max_length=50, verbose_name='Teaching Characteristics')
     click_nums = models.IntegerField(default=0, verbose_name='Click Number')
     fav_nums = models.IntegerField(default=0, verbose_name='Favorite Number')
+    age = models.IntegerField(default=18, verbose_name='Age')
+    image = models.ImageField(upload_to='teacher/%Y/%m', verbose_name='Teacher Image', max_length=100)
     add_time = models.DateTimeField(auto_now_add=True, verbose_name='Add Time')
 
     class Meta:
